@@ -9,6 +9,7 @@ import fs from '@skpm/fs';
 import { CodeType, picassoCode } from '@wubafe/picasso-parse';
 
 export default (rootPath, codeDSL) => {
+    console.log("handleRNCode")
     const pageWidth = codeDSL.structure.width;
     const codePath = `${rootPath}/${codeDSL.name.replace(/\//g, '／')}`;
     // 生成代码片段

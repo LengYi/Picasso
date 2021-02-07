@@ -11,6 +11,7 @@ export const picassoCode = (
     size: number, // 画板宽度 370px、750px 按照移动端处理
     platform: CodeType = CodeType.WebPx,
 ) => {
+    console.log("picassoCode")
     switch (platform) {
         case CodeType.WebPx:
             return picassoWebCode(data,size);

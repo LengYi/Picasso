@@ -30,27 +30,27 @@ export const picassoArtboardMeatureParse = (layer: SKLayer): Component => {
  * 
  */
 export const picassoArtboardCodeParse = (layer: SKLayer): Component => {
-    // console.log('12222', JSON.stringify(layer))
+     console.log('code_dsl_1', layer)
     // fs.writeFileSync('./code_dsl_1.json',JSON.stringify(layer,null,2));
     // 画板处理
     layer = parseArtboardLayer(layer, 'code');
-    // console.log('22222', JSON.stringify(layer))
+    console.log('code_dsl_2', layer)
     // fs.writeFileSync('./code_dsl_2.json',JSON.stringify(layer,null,2));
     // 1.DSL处理
     let DSL = parseDSL([layer]);
-    // console.log('32222', JSON.stringify(DSL))
+    console.log('code_dsl_3', DSL)
     // fs.writeFileSync('./code_dsl_3.json',JSON.stringify(DSL,null,2));
     // 2. 特征分组
     DSL = picassoGroup(DSL);
-    // console.log('42222', JSON.stringify(DSL))
+    console.log('code_dsl_4', DSL)
     // fs.writeFileSync('./code_dsl_4.json',JSON.stringify(DSL,null,2));
     // 3. 布局处理
     DSL = picassoLayout(DSL);
-    // console.log('52222', JSON.stringify(DSL))
+    console.log('code_dsl_5', DSL)
     // fs.writeFileSync('./code_dsl_5.json',JSON.stringify(DSL,null,2));
     // 4. 添加className
     DSL = handleClassName(DSL);
-    // console.log('62222', JSON.stringify(DSL))
+    console.log('code_dsl_6', DSL)
     // fs.writeFileSync('./code_dsl_6.json',JSON.stringify(DSL,null,2));
     return DSL[0];
 }

@@ -18,6 +18,7 @@ import { generateRNStyle } from './generateStyle';
  * @param { number } size 画板宽度
  */
 export const picassoRNCode = (data: Layer[], size: number) => {
+    console.log("picassoRNCode")
     // class 名称处理
     data = handleClassName(data);
 

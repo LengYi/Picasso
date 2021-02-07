@@ -14,6 +14,7 @@ import getImageLayers from './getImageLayers';
  *
  */
 export const parseArtboard = (artboardItem,codeType, progressSlice, getProgress, rootPath) => new Promise((resolve, reject) => {
+    console.log("parseArtboard")
     // 未解析，则走解析流程
     const symbolInstanceIds = [];
     // 字体存储
@@ -23,7 +24,7 @@ export const parseArtboard = (artboardItem,codeType, progressSlice, getProgress,
     const codeImageMap = {};
     const d1 = new Date().valueOf();
     // console.log('解析图片开始：', d1, artboardItem.frame.width);
-    const sliceSize = 750 === artboardItem.frame.width ? 4 : 2;
+    const sliceSize = 375 === artboardItem.frame.width ? 4 : 2;
     const sliceList = getImageLayers(artboardItem.layers, symbolInstanceIds, fontMap, symbolGroups, codeImageMap, rootPath, sliceSize);
     // console.log('fontMap', fontMap);
     const d2 = new Date().valueOf();
@@ -166,7 +167,7 @@ export const parseArtboard = (artboardItem,codeType, progressSlice, getProgress,
 
     // 切片尺寸处理
     artboardJSON.layers = _handleCodeImage(artboardJSON.layers, codeImageMap);
-
+   
     // 代码DSL
     const codeDSL = codeType===1 ? picassoArtboardOperationCodeParse(JSON.parse(JSON.stringify(artboardJSON))) : picassoArtboardCodeParse(JSON.parse(JSON.stringify(artboardJSON)));
 
@@ -234,9 +235,10 @@ export const parseArtboard = (artboardItem,codeType, progressSlice, getProgress,
         }
         realSliceObject[id] = imageLocalPath;
     });
-
+   
     // 3.删除无用图片目录
-    fs.rmdirSync(`${rootPath}/imgs`);
+    //fs.rmdirSync(`${rootPath}/imgs`);
+   
     codeDSL.children = _setImageUrl(codeDSL.children, realSliceObject);
 
     // 小程序
@@ -244,6 +246,7 @@ export const parseArtboard = (artboardItem,codeType, progressSlice, getProgress,
         handleWeappCode(rootPath, codeDSL);
     // RN
     } else if(codeType === 3) {
+        console.log("root",rootPath,codeDSL)
         handleRNCode(rootPath, codeDSL);
     // web代码生成
     } else {
