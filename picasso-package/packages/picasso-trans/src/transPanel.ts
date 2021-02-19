@@ -22,7 +22,7 @@ export const transPanel = (data: Layer[], options : PanelOptions): any => {
                         width: `${_scale(properties.size.width, scale)}${unit}`,
                         height: `${_scale(properties.size.height, scale)}${unit}`
                     },
-                    opacity: properties.opacity ? `${properties.opacity*100}%`: '',
+                    opacity: properties.opacity,
                     radius: properties.radius ? `${_scale(properties.radius, scale)}${unit}`: ''
                 },
                 fills,

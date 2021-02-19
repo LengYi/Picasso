@@ -18,7 +18,7 @@ import { generateRNStyle } from './generateStyle';
  * @param { number } size 画板宽度
  */
 export const picassoRNCode = (data: Layer[], size: number) => {
-    console.log("picassoRNCode")
+    console.log("picassoRNCode",data)
     // class 名称处理
     data = handleClassName(data);
 
@@ -29,6 +29,7 @@ export const picassoRNCode = (data: Layer[], size: number) => {
         colorFormat: ColorFormat.RGBA,
         codeType: CodeType.ReactNative
     });
+    console.log("样式处理",data)
     // 生成组件
     const jsxCode = generateRNJSX(data);
     // 生成样式

@@ -76,7 +76,7 @@ function _generateRNJSX(data: any): any {
                 // 方案二：将高度及行高均置为 undefined，但会影响上下间距布局
                 html.push(`<${tag} style={${record.addClassName ?
                     `StyleSheet.flatten([styles.${record.addClassName}, styles.${record.className}])`
-                    : `[styles.${record.className}, { height: undefined, lineHeight: undefined }]`}}>`
+                    : `[styles.${record.className}]`}}>`
                 );
             } else {
                 html.push(`<${tag} style={${record.addClassName ?
